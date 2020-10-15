@@ -15,11 +15,20 @@
       var terminalText = null;
       var userInput = null;
 
+      function processInputs(text) {
+        return text.split("\n+++").map(item => {
+          let lines = item.split('\n');
+          // Remove the first line ("+++ {this stuff}\n")
+          lines.splice(0,1);
+          return lines.join('\n');
+        });
+      }
+
       function prepare() {
         // Load the state.contents.
         terminalText = document.getElementById("terminal-text");
         userInput = document.getElementById("user-input");
-        state.contents = userInput.value.split("\n+++\n");
+        state.contents = processInputs(userInput.value);
 
         // Clean up newlines.
         for (let index = 0; index < state.contents.length; index++) {
