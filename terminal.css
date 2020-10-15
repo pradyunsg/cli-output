@@ -39,6 +39,8 @@
   overflow: auto;
 }
 .terminal-text {
+  line-break: anywhere;
+  white-space: pre-wrap;
   margin: 0.5rem;
   padding: 0;
 }
